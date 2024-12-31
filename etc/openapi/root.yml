@@ -12,24 +12,36 @@ paths:
   /api/v1/coffees:
     $ref: './paths/v1/coffees.yml'
 
-
 components:
-  schemas:
-    ApproachListAgg:
-      $ref: './components/schemas/Coffee.yml'
-
   responses:
     Ok:
       $ref: './components/responses/Ok.yml'
-    OkWithId:
-      $ref: './components/responses/OkWithId.yml'
-    BadRequest:
-      $ref: './components/responses/BadRequest.yml'
-    Unauthorized:
-      $ref: './components/responses/Unauthorized.yml'
-    Forbidden:
-      $ref: './components/responses/Forbidden.yml'
     NotFound:
-      $ref: './components/responses/NotFound.yml'
-    Conflict:
-      $ref: './components/responses/Conflict.yml'
+      description: "Resource not found"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Resource not found"
+  # schemas:
+  #   Coffee:
+  #     $ref: './components/schemas/Coffee.yml'
+
+  # responses:
+  #   Ok:
+  #     $ref: './components/responses/Ok.yml'
+  #   OkWithId:
+  #     $ref: './components/responses/OkWithId.yml'
+  #   BadRequest:
+  #     $ref: './components/responses/BadRequest.yml'
+  #   Unauthorized:
+  #     $ref: './components/responses/Unauthorized.yml'
+  #   Forbidden:
+  #     $ref: './components/responses/Forbidden.yml'
+  #   NotFound:
+  #     $ref: './components/responses/NotFound.yml'
+  #   Conflict:
+  #     $ref: './components/responses/Conflict.yml'

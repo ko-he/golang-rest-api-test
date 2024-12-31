@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"testing"
@@ -20,16 +22,23 @@ import (
 )
 
 var (
-	onceDoc    sync.Once
-	openapiDoc *openapi3.T
+	onceDoc        sync.Once
+	openapiDoc     *openapi3.T
+	_, file, _, _  = runtime.Caller(0)
+	DirProjectRoot = filepath.Join(filepath.Dir(file), "../../..")
 )
 
 func AssertRequestWithOpenAPISpec(t *testing.T, request *http.Request, recorder *httptest.ResponseRecorder) {
 	t.Helper()
 
-	// loader := openapi3.Loader{}
+	loader := openapi3.Loader{
+		Context:               context.Background(),
+		IsExternalRefsAllowed: true,
+	}
 
-	onceDoc.Do(func() {})
+	onceDoc.Do(func() {
+		openapiDoc = lo.Must(loader.LoadFromFile(filepath.Join(DirProjectRoot, "etc/openapi/root.yml")))
+	})
 
 	router := lo.Must(legacy.NewRouter(openapiDoc))
 

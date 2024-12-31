@@ -24,6 +24,9 @@ post:
             comment:
               description: 'コーヒーの香りや味わいにのコメント'
               type: 'string'
+            productionArea:
+              description: '産地'
+              type: 'string'
             richScore:
               description: 'コクのスコア'
               type: 'integer'
@@ -37,7 +40,16 @@ post:
               description: '香りのスコア'
               type: 'integer'
   responses:
-    200: { $ref: '../root.yml#/components/responses/OkWithId' }
-    400: { $ref: '../root.yml#/components/responses/BadRequest' }
-    401: { $ref: '../root.yml#/components/responses/Unauthorized' }
-    409: { $ref: '../root.yml#/components/responses/Conflict' }
+    # 200: { $ref: '../../root.yml#/components/responses/OkWithId' }
+    200:
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            type: 'object'
+            additionalProperties: false
+  
+  #   200: { $ref: '../root.yml#/components/responses/OkWithId' }
+  #   400: { $ref: '../root.yml#/components/responses/BadRequest' }
+  #   401: { $ref: '../root.yml#/components/responses/Unauthorized' }
+  #   409: { $ref: '../root.yml#/components/responses/Conflict' }

@@ -16,4 +16,5 @@ func (c *CoffeeController) Mount(group *gin.RouterGroup, basePath string) {
 }
 
 func (c *CoffeeController) Get(gc *gin.Context) {
+	gc.JSON(200, map[string]any{})
 }
