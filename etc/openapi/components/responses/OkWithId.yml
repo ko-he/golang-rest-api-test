@@ -1,0 +1,14 @@
+description: 'OK'
+content:
+  application/json:
+    schema:
+      type: 'object'
+      additionalProperties: false
+      required:
+        - 'id'
+      properties:
+        id:
+          description: 'ID'
+          type: 'string'
+          format: 'uuid'
+

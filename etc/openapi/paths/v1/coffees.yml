@@ -1,0 +1,43 @@
+post:
+  summary: 'コーヒーを作成する'
+  tags:
+    - 'test api'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: 'object'
+          additionalProperties: false
+          required:
+            - 'name'
+            - 'comment'
+            - 'productionArea'
+            - 'richScore'
+            - 'bitternessScore'
+            - 'sournessScore'
+            - 'aromaScore'
+          properties:
+            name:
+              description: 'コーヒーの名前'
+              type: 'string'
+            comment:
+              description: 'コーヒーの香りや味わいにのコメント'
+              type: 'string'
+            richScore:
+              description: 'コクのスコア'
+              type: 'integer'
+            bitternessScore:
+              description: '苦みのスコア'
+              type: 'integer'
+            sournessScore:
+              description: '酸味のスコア'
+              type: 'integer'
+            aromaScore:
+              description: '香りのスコア'
+              type: 'integer'
+  responses:
+    200: { $ref: '../root.yml#/components/responses/OkWithId' }
+    400: { $ref: '../root.yml#/components/responses/BadRequest' }
+    401: { $ref: '../root.yml#/components/responses/Unauthorized' }
+    409: { $ref: '../root.yml#/components/responses/Conflict' }
