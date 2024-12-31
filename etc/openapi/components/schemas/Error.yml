@@ -1,0 +1,13 @@
+description: 'エラー'
+type: 'object'
+additionalProperties: false
+required:
+  - 'id'
+  - 'message'
+properties:
+  id:
+    type: 'string'
+    description: 'エラー ID'
+  message:
+    type: 'string'
+    description: 'エラーメッセージ'

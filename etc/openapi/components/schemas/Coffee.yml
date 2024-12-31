@@ -1,0 +1,35 @@
+description: 'コーヒー'
+type: 'object'
+additionalProperties: false
+required:
+  - 'id'
+  - 'name'
+  - 'comment'
+  - 'productionArea'
+  - 'richScore'
+  - 'bitternessScore'
+  - 'sournessScore'
+  - 'aromaScore'
+properties:
+  id:
+    description: 'コーヒー ID'
+    type: 'string'
+    format: 'uuid'
+  name:
+    description: 'コーヒーの名前'
+    type: 'string'
+  comment:
+    description: 'コーヒーの香りや味わいにのコメント'
+    type: 'string'
+  richScore:
+    description: 'コクのスコア'
+    type: 'integer'
+  bitternessScore:
+    description: '苦みのスコア'
+    type: 'integer'
+  sournessScore:
+    description: '酸味のスコア'
+    type: 'integer'
+  aromaScore:
+    description: '香りのスコア'
+    type: 'integer'
