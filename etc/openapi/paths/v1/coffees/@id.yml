@@ -1,0 +1,33 @@
+get:
+  summary: 'コーヒーを取得する'
+  tags:
+    - 'test api'
+  parameters:
+    - in: 'path'
+      name: 'id'
+      required: true
+      schema:
+        description: 'コーヒーID（必須）'
+        type: 'string'
+        format: 'uuid'
+        minLength: 1
+          
+  responses:
+    200:
+      description: 'OK'
+      content:
+        application/json:
+          schema:
+            type: 'object'
+            additionalProperties: false
+            required:
+              - 'coffee'
+            properties:
+              coffee:
+                description: '初回メール配信日時'
+                type: 'object'
+                properties:
+                  id:
+                    description: 'コーヒーID'
+                    type: 'string'
+                    format: 'uuid'

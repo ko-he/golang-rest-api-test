@@ -11,6 +11,8 @@ tags:
 paths:
   /api/v1/coffees:
     $ref: './paths/v1/coffees.yml'
+  /api/v1/coffees/{id}:
+    $ref: './paths/v1/coffees/@id.yml'
 
 components:
   schemas:

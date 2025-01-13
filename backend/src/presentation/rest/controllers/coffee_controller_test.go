@@ -31,6 +31,23 @@ func Test_CoffeesCreate(t *testing.T) {
 	gc.Request = req
 
 	c := controllers.NewCoffeeController()
+	c.Create(gc)
+
+	testutils.AssertRequestWithOpenAPISpec(t, req, recorder)
+}
+
+func Test_CoffeesGet(t *testing.T) {
+	req := testutils.NewRequestBuilder().
+		WithMethod(http.MethodGet).
+		WithTarget("/api/v1/coffees/id").
+		WithHeader("Content-Type", "application/json").
+		MustBuild()
+
+	recorder := httptest.NewRecorder()
+	gc, _ := gin.CreateTestContext(recorder)
+	gc.Request = req
+
+	c := controllers.NewCoffeeController()
 	c.Get(gc)
 
 	testutils.AssertRequestWithOpenAPISpec(t, req, recorder)
