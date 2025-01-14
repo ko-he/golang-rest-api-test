@@ -12,6 +12,7 @@ type GetCoffeeUsecase interface {
 }
 
 type GetCoffeeUsecaseInput struct {
+	CoffeeID string
 }
 
 type GetCoffeeUsecaseOutput struct {
@@ -28,7 +29,7 @@ func NewGetCoffeeUsecase() GetCoffeeUsecase {
 func (u *getCoffeeUsecase) Execute(ctx context.Context, input GetCoffeeUsecaseInput) (*GetCoffeeUsecaseOutput, error) {
 	return &GetCoffeeUsecaseOutput{
 		Coffee: &domain.Coffee{
-			ID:              faker.UUIDHyphenated(),
+			ID:              input.CoffeeID,
 			Name:            "コーヒー",
 			Comment:         faker.Sentence(),
 			ProductionArea:  "南米",

@@ -36,7 +36,10 @@ type GetCoffeeResponse struct {
 }
 
 func (c *CoffeeController) Get(gc *gin.Context) {
-	output, err := c.getCoffeeUsecase.Execute(gc.Request.Context(), usecases.GetCoffeeUsecaseInput{})
+	coffeeID := gc.Request.PathValue("id")
+	output, err := c.getCoffeeUsecase.Execute(gc.Request.Context(), usecases.GetCoffeeUsecaseInput{
+		CoffeeID: coffeeID,
+	})
 	if err != nil {
 		gc.Error(err)
 		return

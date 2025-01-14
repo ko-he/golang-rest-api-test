@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-faker/faker/v4"
 )
 
 func Test_CoffeesCreate(t *testing.T) {
@@ -46,6 +47,7 @@ func Test_CoffeesGet(t *testing.T) {
 	recorder := httptest.NewRecorder()
 	gc, _ := gin.CreateTestContext(recorder)
 	gc.Request = req
+	gc.Request.SetPathValue("id", faker.UUIDHyphenated())
 
 	c := di.ProvideCoffeeController()
 	c.Get(gc)
