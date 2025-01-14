@@ -24,10 +24,7 @@ get:
               - 'coffee'
             properties:
               coffee:
-                description: '初回メール配信日時'
-                type: 'object'
-                properties:
-                  id:
-                    description: 'コーヒーID'
-                    type: 'string'
-                    format: 'uuid'
+                $ref: '../../../root.yml#/components/schemas/Coffee'
+    400: { $ref: '../../../root.yml#/components/responses/BadRequest' }
+    401: { $ref: '../../../root.yml#/components/responses/Unauthorized' }
+    404: { $ref: '../../../root.yml#/components/responses/NotFound' }

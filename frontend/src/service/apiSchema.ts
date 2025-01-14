@@ -80,17 +80,13 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            /** @description 初回メール配信日時 */
-                            coffee: {
-                                /**
-                                 * Format: uuid
-                                 * @description コーヒーID
-                                 */
-                                id?: string;
-                            };
+                            coffee: components["schemas"]["Coffee"];
                         };
                     };
                 };
+                400: components["responses"]["BadRequest"];
+                401: components["responses"]["Unauthorized"];
+                404: components["responses"]["NotFound"];
             };
         };
         put?: never;
