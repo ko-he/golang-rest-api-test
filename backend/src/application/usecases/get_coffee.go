@@ -28,7 +28,14 @@ func NewGetCoffeeUsecase() GetCoffeeUsecase {
 func (u *getCoffeeUsecase) Execute(ctx context.Context, input GetCoffeeUsecaseInput) (*GetCoffeeUsecaseOutput, error) {
 	return &GetCoffeeUsecaseOutput{
 		Coffee: &domain.Coffee{
-			ID: faker.UUIDHyphenated(),
+			ID:              faker.UUIDHyphenated(),
+			Name:            "コーヒー",
+			Comment:         faker.Sentence(),
+			ProductionArea:  "南米",
+			RichScore:       5,
+			BitternessScore: 4,
+			SournessScore:   2,
+			AromaScore:      3,
 		},
 	}, nil
 }

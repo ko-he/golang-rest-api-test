@@ -21,6 +21,9 @@ properties:
   comment:
     description: 'コーヒーの香りや味わいにのコメント'
     type: 'string'
+  productionArea:
+    description: '豆の産地'
+    type: 'string'
   richScore:
     description: 'コクのスコア'
     type: 'integer'
