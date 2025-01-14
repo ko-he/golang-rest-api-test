@@ -1,7 +1,7 @@
 package controllers_test
 
 import (
-	"golang-rest-api-test/src/presentation/rest/controllers"
+	"golang-rest-api-test/src/di"
 	"golang-rest-api-test/src/testutils"
 	"net/http"
 	"net/http/httptest"
@@ -30,7 +30,7 @@ func Test_CoffeesCreate(t *testing.T) {
 	gc, _ := gin.CreateTestContext(recorder)
 	gc.Request = req
 
-	c := controllers.NewCoffeeController()
+	c := di.ProvideCoffeeController()
 	c.Create(gc)
 
 	testutils.AssertRequestWithOpenAPISpec(t, req, recorder)
@@ -47,7 +47,7 @@ func Test_CoffeesGet(t *testing.T) {
 	gc, _ := gin.CreateTestContext(recorder)
 	gc.Request = req
 
-	c := controllers.NewCoffeeController()
+	c := di.ProvideCoffeeController()
 	c.Get(gc)
 
 	testutils.AssertRequestWithOpenAPISpec(t, req, recorder)

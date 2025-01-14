@@ -1,15 +1,22 @@
 package controllers
 
 import (
+	"golang-rest-api-test/src/application/usecases"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )
 
 type CoffeeController struct {
+	getCoffeeUsecase usecases.GetCoffeeUsecase
 }
 
-func NewCoffeeController() *CoffeeController {
-	return &CoffeeController{}
+func NewCoffeeController(
+	getCoffeeUsecase usecases.GetCoffeeUsecase,
+) *CoffeeController {
+	return &CoffeeController{
+		getCoffeeUsecase: getCoffeeUsecase,
+	}
 }
 
 func (c *CoffeeController) Mount(group *gin.RouterGroup, basePath string) {
