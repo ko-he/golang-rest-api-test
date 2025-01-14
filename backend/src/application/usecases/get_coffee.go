@@ -2,6 +2,7 @@ package usecases
 
 import (
 	"context"
+	"golang-rest-api-test/src/domain"
 
 	"github.com/go-faker/faker/v4"
 )
@@ -10,17 +11,15 @@ type GetCoffeeUsecase interface {
 	Execute(ctx context.Context, input GetCoffeeUsecaseInput) (*GetCoffeeUsecaseOutput, error)
 }
 
-type GetCoffeeUsecaseInput struct{}
+type GetCoffeeUsecaseInput struct {
+}
 
 type GetCoffeeUsecaseOutput struct {
-	Coffee outputCoffee `json:"coffee"`
+	Coffee *domain.Coffee
 }
 
-type outputCoffee struct {
-	ID string `json:"id"`
+type getCoffeeUsecase struct {
 }
-
-type getCoffeeUsecase struct{}
 
 func NewGetCoffeeUsecase() GetCoffeeUsecase {
 	return &getCoffeeUsecase{}
@@ -28,7 +27,7 @@ func NewGetCoffeeUsecase() GetCoffeeUsecase {
 
 func (u *getCoffeeUsecase) Execute(ctx context.Context, input GetCoffeeUsecaseInput) (*GetCoffeeUsecaseOutput, error) {
 	return &GetCoffeeUsecaseOutput{
-		Coffee: outputCoffee{
+		Coffee: &domain.Coffee{
 			ID: faker.UUIDHyphenated(),
 		},
 	}, nil

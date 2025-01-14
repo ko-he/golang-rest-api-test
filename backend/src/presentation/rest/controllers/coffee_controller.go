@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"golang-rest-api-test/src/application/usecases"
+	"golang-rest-api-test/src/presentation/rest/entities"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -30,10 +31,18 @@ func (c *CoffeeController) Create(gc *gin.Context) {
 	})
 }
 
+type GetCoffeeResponse struct {
+	Coffee entities.CoffeeEntity `json:"coffee"`
+}
+
 func (c *CoffeeController) Get(gc *gin.Context) {
-	gc.JSON(200, map[string]any{
-		"coffee": map[string]any{
-			"id": uuid.NewString(),
-		},
+	output, err := c.getCoffeeUsecase.Execute(gc.Request.Context(), usecases.GetCoffeeUsecaseInput{})
+	if err != nil {
+		gc.Error(err)
+		return
+	}
+
+	gc.JSON(200, GetCoffeeResponse{
+		Coffee: entities.FromCoffeeDomain(output.Coffee),
 	})
 }
