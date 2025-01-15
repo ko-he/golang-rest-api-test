@@ -30,7 +30,14 @@ func ProvideController() *controllers.RootController {
 
 var usecaseProvides = wire.NewSet(
 	ProvideGetCoffeeUsecase,
+	ProvideCreateCoffeeUsecase,
 )
+
+func ProvideCreateCoffeeUsecase() usecases.CreateCoffeeUsecase {
+	panic(wire.Build(
+		usecases.NewCreateCoffeeUsecase,
+	))
+}
 
 func ProvideGetCoffeeUsecase() usecases.GetCoffeeUsecase {
 	panic(wire.Build(

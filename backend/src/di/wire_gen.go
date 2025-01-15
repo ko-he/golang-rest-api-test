@@ -16,7 +16,8 @@ import (
 
 func ProvideCoffeeController() *controllers.CoffeeController {
 	getCoffeeUsecase := ProvideGetCoffeeUsecase()
-	coffeeController := controllers.NewCoffeeController(getCoffeeUsecase)
+	createCoffeeUsecase := ProvideCreateCoffeeUsecase()
+	coffeeController := controllers.NewCoffeeController(getCoffeeUsecase, createCoffeeUsecase)
 	return coffeeController
 }
 
@@ -24,6 +25,11 @@ func ProvideController() *controllers.RootController {
 	coffeeController := ProvideCoffeeController()
 	rootController := controllers.NewRootController(coffeeController)
 	return rootController
+}
+
+func ProvideCreateCoffeeUsecase() usecases.CreateCoffeeUsecase {
+	createCoffeeUsecase := usecases.NewCreateCoffeeUsecase()
+	return createCoffeeUsecase
 }
 
 func ProvideGetCoffeeUsecase() usecases.GetCoffeeUsecase {
@@ -35,4 +41,5 @@ func ProvideGetCoffeeUsecase() usecases.GetCoffeeUsecase {
 
 var usecaseProvides = wire.NewSet(
 	ProvideGetCoffeeUsecase,
+	ProvideCreateCoffeeUsecase,
 )
