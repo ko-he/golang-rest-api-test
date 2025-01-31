@@ -48,6 +48,7 @@ export async function request<Path extends UrlPaths, Method extends HttpMethods>
       requestConfig.url = requestConfig.url?.replace(`{${prop}}`, `${value}`)
     }
   }
+
   return await axios.request<
     ResponseData<Path, Method>,
     AxiosResponse<ResponseData<Path, Method>>,
