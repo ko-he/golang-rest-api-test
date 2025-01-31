@@ -1,13 +1,13 @@
 import { request } from "./apiClient"
 
 export const createCoffee = async (
-			name: string,
-			comment: string,
-			productionArea: string,
-			richScore: number,
-			bitternessScore: number,
-			sournessScore: number,
-			aromaScore: number,
+	name: string,
+	comment: string,
+	productionArea: string,
+	richScore: number,
+	bitternessScore: number,
+	sournessScore: number,
+	aromaScore: number,
 ): Promise<string> => {
 	const response = await request({
 		url: '/api/v1/coffees',
