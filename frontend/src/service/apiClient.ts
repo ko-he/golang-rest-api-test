@@ -30,10 +30,10 @@ export type ResponseData<
 > = Get<paths, `${Path}.${Method}.responses.200.content.application/json`>;
 
 export type AxiosConfigWrapper<Path extends UrlPaths, Method extends HttpMethods> = AxiosRequestConfig  & {
-	url: Path;
-	method: Method & HttpMethodsFilteredByPath<Path>;
-	params?: RequestParameters<Path, Method>;
-	data?: RequestData<Path, Method>;
+  url: Path;
+  method: Method & HttpMethodsFilteredByPath<Path>;
+  params?: RequestParameters<Path, Method>;
+  data?: RequestData<Path, Method>;
   pathParam?: RequestPathParam<Path, Method>;
 }
 
